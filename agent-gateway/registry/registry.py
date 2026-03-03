@@ -439,7 +439,9 @@ def cleanup_stale_services(current_service_names: Set[str]) -> None:
             'auth-proxy',
             'nasiko-router',
             'landing-page',
-            'n8n'
+            'n8n',
+            'gateway-status',
+            'gateway-health',
         }
 
         for kong_service in kong_services:
@@ -519,6 +521,11 @@ def register_static_proxies():
         local_service="nasiko-router",
         env_var="KONG_ROUTER_HOST",
     )
+    n8n_host = _resolve_service_host(
+        k8s_service="n8n",
+        local_service="n8n",
+        env_var="KONG_N8N_HOST",
+    )
 
     static_services = [
         # Backend API proxy - auth only, no chat logging
@@ -582,7 +589,7 @@ def register_static_proxies():
         # Static landing page - forward to web app
         {
             "name": "landing-page",
-            "host": f"nasiko-web.{PLATFORM_NAMESPACE}.svc.cluster.local",
+            "host": web_host,
             "port": 4000,
             "paths": ["/"],
             "upstream_path": "/app/",
@@ -591,10 +598,32 @@ def register_static_proxies():
             "preserve_host": True,
             "middlewares": ["cors"]  # CORS only
         },
+        # Gateway status passthrough for local proxy health checks
+        {
+            "name": "gateway-status",
+            "host": "kong-service-registry",
+            "port": 8080,
+            "paths": ["/status"],
+            "methods": ["GET", "OPTIONS"],
+            "strip_path": False,
+            "preserve_host": False,
+            "middlewares": ["cors"]
+        },
+        # Gateway health passthrough for local proxy health checks
+        {
+            "name": "gateway-health",
+            "host": "kong-service-registry",
+            "port": 8080,
+            "paths": ["/health"],
+            "methods": ["GET", "OPTIONS"],
+            "strip_path": False,
+            "preserve_host": False,
+            "middlewares": ["cors"]
+        },
         # N8N workflow automation service
         {
             "name": "n8n",
-            "host": f"n8n.{PLATFORM_NAMESPACE}.svc.cluster.local",
+            "host": n8n_host,
             "port": 5678,
             "paths": ["/n8n"],
             "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
