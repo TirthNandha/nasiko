@@ -2,8 +2,7 @@
 Base handler class with common utilities and shared functionality
 """
 
-from typing import Any, Dict, Optional
-import logging
+from typing import Any, Dict
 
 
 class BaseHandler:

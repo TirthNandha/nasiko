@@ -9,12 +9,9 @@ from typing import List, Dict, Any
 
 import numpy as np
 from tqdm import tqdm
-import faiss
 from langchain_core.embeddings import Embeddings
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
-from langchain.schema import Document
-from langchain_community.vectorstores.faiss import InMemoryDocstore
 
 
 from router.src.core.routing_engine import RoutingEngine
@@ -574,7 +571,7 @@ def semantic_search_exps(embedding_file=EMBEDDINGS_FILE):
                             f"      STATUS: FAILED (selected: {selected_agent})\n"
                         )
                     else:
-                        shortlists_file.write(f"      STATUS: PASSED\n")
+                        shortlists_file.write("      STATUS: PASSED\n")
                     shortlists_file.write("\n")
 
                     # Track shortlist statistics for failed turns

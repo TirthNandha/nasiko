@@ -18,7 +18,6 @@ from config import Config
 from agent_builder import AgentBuilder
 
 # Import observability components directly like K8s build worker
-import sys
 
 sys.path.insert(0, "/app")
 from app.utils.observability.injector import TracingInjector
@@ -165,7 +164,7 @@ class RedisStreamListener:
 
             if not all([command, agent_name]):
                 self.logger.error(
-                    f"Invalid message format: missing required fields (command, agent_name)"
+                    "Invalid message format: missing required fields (command, agent_name)"
                 )
                 await self.acknowledge_message(msg_id)
                 return
@@ -731,10 +730,10 @@ class RedisStreamListener:
             )
 
             if dockerfile_exists_before and not dockerfile_exists_after:
-                self.logger.error(f"🚨 Dockerfile was deleted during injection!")
+                self.logger.error("🚨 Dockerfile was deleted during injection!")
             elif dockerfile_exists_after and dockerfile_size == 0:
                 self.logger.error(
-                    f"🚨 Dockerfile was corrupted during injection (0 bytes)!"
+                    "🚨 Dockerfile was corrupted during injection (0 bytes)!"
                 )
 
             if injection_success and dockerfile_exists_after and dockerfile_size > 0:
@@ -761,7 +760,6 @@ class RedisStreamListener:
         webhook_url: Optional[str] = None,
     ) -> dict:
         """Deploy agent container with proper networking"""
-        import socket
 
         # Stop and remove existing container if it exists
         await self._cleanup_existing_container(agent_name)
@@ -964,7 +962,7 @@ class RedisStreamListener:
                     "id": agent_name,
                     "name": agent_name,
                     "url": service_url,
-                    "description": f"Agent deployed via local Docker",
+                    "description": "Agent deployed via local Docker",
                     "capabilities": {"tools": [], "prompts": []},
                     "version": "1.0.0",
                     "deployment_type": "docker-local",
@@ -1044,9 +1042,7 @@ class RedisStreamListener:
         """Create agent permissions in the auth service (copied from K8s worker)"""
         try:
             # Use auth service URL from config - use container network name
-            auth_service_url = (
-                f"http://nasiko-auth-service:8001"  # For local deployment
-            )
+            auth_service_url = "http://nasiko-auth-service:8001"  # For local deployment
             url = f"{auth_service_url}/auth/agents/{agent_id}/permissions"
 
             self.logger.info(

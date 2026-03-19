@@ -77,7 +77,7 @@ def setup_working_directory(
     # Check if modules are already in working directory
     main_tf = work_dir / "main.tf"
     if not main_tf.exists():
-        console.print(f"[dim]Copying Terraform modules to working directory...[/]")
+        console.print("[dim]Copying Terraform modules to working directory...[/]")
         _copy_terraform_modules(provider_source, work_dir)
 
     # Generate backend configuration

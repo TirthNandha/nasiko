@@ -7,7 +7,6 @@ from typing import List
 from rich.console import Console
 
 from core.api_client import get_api_client
-from core.settings import APIEndpoints
 
 console = Console()
 
@@ -16,7 +15,7 @@ def grant_user_access_command(agent_id: str, user_ids: List[str]):
     """
     Grant access to an agent for specific users.
     """
-    console.print(f"[bold magenta]--- Granting User Access ---[/bold magenta]")
+    console.print("[bold magenta]--- Granting User Access ---[/bold magenta]")
     console.print(f"[cyan]Agent ID: {agent_id}[/cyan]")
     console.print(f"[cyan]User IDs: {', '.join(user_ids)}[/cyan]")
 
@@ -68,7 +67,7 @@ def grant_agent_access_command(agent_id: str, agent_ids: List[str]):
     """
     Grant access to an agent for specific other agents.
     """
-    console.print(f"[bold magenta]--- Granting Agent Access ---[/bold magenta]")
+    console.print("[bold magenta]--- Granting Agent Access ---[/bold magenta]")
     console.print(f"[cyan]Agent ID: {agent_id}[/cyan]")
     console.print(f"[cyan]Target Agent IDs: {', '.join(agent_ids)}[/cyan]")
 
@@ -120,7 +119,7 @@ def list_agent_access_command(agent_id: str):
     """
     List current access permissions for an agent.
     """
-    console.print(f"[bold magenta]--- Agent Access Information ---[/bold magenta]")
+    console.print("[bold magenta]--- Agent Access Information ---[/bold magenta]")
     console.print(f"[cyan]Agent ID: {agent_id}[/cyan]")
 
     try:
@@ -133,7 +132,7 @@ def list_agent_access_command(agent_id: str):
         if result is None:
             raise typer.Exit(1)
 
-        console.print(f"[green]✅ Access information retrieved[/green]")
+        console.print("[green]✅ Access information retrieved[/green]")
         console.print(f"[cyan]Owner ID: {result.get('owner_id')}[/cyan]")
         # Display users with access
         users = result.get("can_be_accessed_by_users", [])
@@ -166,7 +165,7 @@ def revoke_user_access_command(agent_id: str, user_ids: List[str]):
     """
     Revoke access to an agent for specific users.
     """
-    console.print(f"[bold magenta]--- Revoking User Access ---[/bold magenta]")
+    console.print("[bold magenta]--- Revoking User Access ---[/bold magenta]")
     console.print(f"[cyan]Agent ID: {agent_id}[/cyan]")
     console.print(f"[cyan]User IDs: {', '.join(user_ids)}[/cyan]")
 
@@ -235,7 +234,7 @@ def revoke_agent_access_command(agent_id: str, agent_ids: List[str]):
     """
     Revoke access to an agent for specific other agents.
     """
-    console.print(f"[bold magenta]--- Revoking Agent Access ---[/bold magenta]")
+    console.print("[bold magenta]--- Revoking Agent Access ---[/bold magenta]")
     console.print(f"[cyan]Agent ID: {agent_id}[/cyan]")
     console.print(f"[cyan]Target Agent IDs: {', '.join(agent_ids)}[/cyan]")
 

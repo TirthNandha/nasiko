@@ -5,7 +5,6 @@ Superuser initialization script for Docker Compose setup
 
 import sys
 import time
-import os
 
 # Add orchestrator to path
 sys.path.insert(0, "/app/orchestrator")

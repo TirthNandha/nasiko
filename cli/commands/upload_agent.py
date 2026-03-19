@@ -116,7 +116,7 @@ def upload_directory_command(directory_path: str, agent_name: Optional[str] = No
         with tempfile.NamedTemporaryFile(suffix=".zip", delete=False) as temp_zip:
             temp_zip_path = temp_zip.name
 
-        print(f"creating temporary zip file...")
+        print("creating temporary zip file...")
         import re
 
         _version_dir = re.compile(r"^v\d+\.\d+")
@@ -128,7 +128,7 @@ def upload_directory_command(directory_path: str, agent_name: Optional[str] = No
                     zipf.write(file_path, arcname)
 
         # Upload the temporary zip file using the API client
-        print(f"uploading zip file...")
+        print("uploading zip file...")
         client = get_api_client()
         additional_data = {}
         if agent_name:
@@ -240,7 +240,7 @@ def list_user_uploaded_agents_command():
             if agent_id and agent_id != "":
                 console.print(f"      [dim]ID: {agent_id}[/dim]")
             else:
-                console.print(f"      [dim]ID: Not assigned yet[/dim]")
+                console.print("      [dim]ID: Not assigned yet[/dim]")
 
             console.print(
                 f"      [{status_color}]{status_icon} {upload_status}[/{status_color}] • [blue]{upload_type.replace('_', ' ').title()}[/blue]"

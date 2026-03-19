@@ -40,7 +40,7 @@ def register_workflow(
 
         if result.get("success"):
             console.print(
-                f"[green]✅ Successfully registered N8N workflow as agent[/green]"
+                "[green]✅ Successfully registered N8N workflow as agent[/green]"
             )
             if result.get("agent_name"):
                 console.print(f"[cyan]Agent Name: {result['agent_name']}[/cyan]")
@@ -80,7 +80,7 @@ def connect_n8n(connection_name: str, n8n_url: str, api_key: str):
         data = result.get("data", result)
 
         if data.get("connection_status") == "success":
-            console.print(f"[green]✅ Successfully connected to N8N instance[/green]")
+            console.print("[green]✅ Successfully connected to N8N instance[/green]")
             console.print(f"[cyan]Connection: {connection_name}[/cyan]")
             console.print(
                 f"[cyan]Status: {data.get('connection_status', 'active')}[/cyan]"

@@ -3,9 +3,7 @@ Agent registry service for fetching and managing agent information.
 """
 
 import logging
-import asyncio
 from typing import List, Dict, Optional
-from functools import lru_cache
 
 import httpx
 from router.src.config import settings

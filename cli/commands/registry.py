@@ -3,10 +3,8 @@ Registry management commands for the Nasiko CLI.
 """
 
 from datetime import datetime
-from typing import Optional
 
 import requests
-import typer
 from rich.console import Console
 from rich.json import JSON
 from rich.panel import Panel
@@ -287,7 +285,7 @@ def display_agent_capabilities(agent_data):
 
         examples = skill.get("examples", [])
         if examples:
-            skill_info += f"[bold]Examples:[/bold]\n"
+            skill_info += "[bold]Examples:[/bold]\n"
             for example in examples:
                 skill_info += f"  • {example}\n"
 
@@ -411,7 +409,7 @@ Visit the Swagger UI link above for interactive documentation where you can:
 
         console.print(Panel(docs_info, title="API Documentation", border_style="blue"))
 
-        console.print(f"\n[green]✅ API server is running and accessible[/green]")
+        console.print("\n[green]✅ API server is running and accessible[/green]")
         console.print(
             f"[yellow]💡 Open {docs_url} in your browser for interactive documentation[/yellow]"
         )

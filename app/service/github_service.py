@@ -512,7 +512,7 @@ class GitHubService:
 
                 raise ValueError(f"Failed to clone repository: {error_msg}")
 
-        except Exception as e:
+        except Exception:
             # Clean up on error
             if os.path.exists(temp_dir):
                 shutil.rmtree(temp_dir)

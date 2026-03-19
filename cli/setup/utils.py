@@ -525,7 +525,7 @@ def get_service_external_ip(namespace, service_name, timeout=300):
                 if address:
                     print(f"✅ LoadBalancer IP/Hostname found: {address}")
                     return address
-        except Exception as e:
+        except Exception:
             # Uncomment for deep debugging if needed
             # print(f"[debug] Error polling service {service_name}: {e}")
             pass

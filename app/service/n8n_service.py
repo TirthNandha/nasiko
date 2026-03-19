@@ -578,7 +578,7 @@ networks:
 
                     # Initialize the agent card generator for n8n workflows
                     generator = AgentCardGeneratorAgent(n8n_agent=True)
-                    self.logger.info(f"Generating agent card for n8n workflow")
+                    self.logger.info("Generating agent card for n8n workflow")
                     # Generate the agent card from the workflow
                     result = generator.generate_agentcard(
                         str(target_dir), verbose=False
@@ -615,7 +615,7 @@ networks:
 
             return {
                 "success": True,
-                "message": f"Agent structure created successfully",
+                "message": "Agent structure created successfully",
                 "agent_path": str(target_dir),
                 "agent_card": generated_agent_card,
             }
@@ -631,7 +631,7 @@ networks:
         try:
             decoded = base64.b64decode(encrypted_credentials.encode()).decode()
             return json.loads(decoded)
-        except Exception as e:
+        except Exception:
             return {}
 
     @staticmethod

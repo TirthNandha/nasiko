@@ -3,13 +3,12 @@ NANDA Service Layer
 Handles business logic and orchestrates calls to the NANDA adapter
 """
 
-from typing import Optional, Dict, Any, List
+from typing import Optional
 import logging
 from app.adapters.nanda_adapter import NANDAAdapter
 from app.api.types import (
     NANDAApiResponse,
     NANDAAgentsListRequest,
-    NANDAAgent,
     NANDAMessagesListRequest,
 )
 

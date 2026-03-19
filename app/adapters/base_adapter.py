@@ -4,7 +4,7 @@ Follows the adapter pattern for consistent external API interaction
 """
 
 from abc import ABC, abstractmethod
-from typing import Any, Dict, Optional, List
+from typing import Any, Dict, Optional
 import logging
 import httpx
 from app.api.types import NANDAApiResponse
@@ -103,7 +103,6 @@ class BaseAdapter(ABC):
 
     def _sanitize_unicode(self, obj: Any) -> Any:
         """Recursively sanitize Unicode surrogate characters from data structures"""
-        import json
 
         if isinstance(obj, str):
             # Replace surrogate characters with replacement character

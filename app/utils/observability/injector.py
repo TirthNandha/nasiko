@@ -192,14 +192,14 @@ class TracingInjector:
         # Check for pyproject.toml first (modern Python projects)
         if os.path.exists(pyproject_file):
             self._update_pyproject_toml(pyproject_file, dependencies)
-            logger.info(f"📦 Updated pyproject.toml with observability dependencies")
+            logger.info("📦 Updated pyproject.toml with observability dependencies")
         elif os.path.exists(req_file):
             self._update_requirements_txt(req_file, dependencies)
-            logger.info(f"📦 Updated requirements.txt with observability dependencies")
+            logger.info("📦 Updated requirements.txt with observability dependencies")
         else:
             # Create requirements.txt as fallback
             self._create_requirements_txt(req_file, dependencies)
-            logger.info(f"📦 Created requirements.txt with observability dependencies")
+            logger.info("📦 Created requirements.txt with observability dependencies")
 
     def _update_requirements_txt(self, req_file: str, dependencies: List[str]):
         """Update requirements.txt file"""
@@ -362,9 +362,9 @@ class TracingInjector:
             f.write("\n".join(new_lines))
 
         if updated_utils:
-            logger.info(f"🐳 Updated Dockerfile to include utils directory")
+            logger.info("🐳 Updated Dockerfile to include utils directory")
         if updated_deps:
-            logger.info(f"🐳 Updated Dockerfile to include observability dependencies")
+            logger.info("🐳 Updated Dockerfile to include observability dependencies")
 
     def _get_observability_dependencies(self) -> List[str]:
         """Get list of observability dependencies"""

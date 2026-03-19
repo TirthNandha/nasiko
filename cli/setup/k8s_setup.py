@@ -641,7 +641,6 @@ def init_modules(
     Example:
         nasiko setup k8s init-modules --source /path/to/terraform
     """
-    from .config import get_default_terraform_dir
 
     console.print("[cyan]Initializing Terraform modules...[/]\n")
 
@@ -653,7 +652,7 @@ def init_modules(
         modules_dir / "digitalocean" / "main.tf"
     ).exists()
 
-    console.print(f"\n[bold cyan]Module Status:[/]")
+    console.print("\n[bold cyan]Module Status:[/]")
     console.print(
         f"  AWS: {'[green]✓ Available[/]' if aws_exists else '[red]✗ Not found[/]'}"
     )

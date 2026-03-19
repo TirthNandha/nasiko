@@ -1,5 +1,4 @@
 import logging
-from typing import Any
 
 from a2a.server.agent_execution import AgentExecutor
 from a2a.server.agent_execution.context import RequestContext
@@ -27,7 +26,7 @@ class WebhookAgentExecutor(AgentExecutor):
     ):
         self._card = card
         self.webhook_agent = webhook_agent
-        logger.info(f"WebhookAgentExecutor initialized")
+        logger.info("WebhookAgentExecutor initialized")
 
     async def _process_request(
         self,

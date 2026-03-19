@@ -9,16 +9,14 @@ discovery with Kubernetes API-based discovery.
 
 import asyncio
 import copy
-import json
 import logging
 import os
 import time
-from typing import Dict, List, Optional, Set
-from urllib.parse import urljoin
+from typing import List, Optional, Set
 
 import requests
 from fastapi import FastAPI, HTTPException
-from kubernetes import client, config, watch
+from kubernetes import client, config
 from pydantic import BaseModel
 from pythonjsonlogger import jsonlogger
 import docker
@@ -426,7 +424,7 @@ def register_service_in_kong(service: ServiceInfo) -> bool:
         # 2. Custom docs proxy service
         # 3. Use direct agent ports for docs access
         logger.info(
-            f"For Swagger docs access: Use direct agent port or configure agent root_path"
+            "For Swagger docs access: Use direct agent port or configure agent root_path"
         )
 
         return True

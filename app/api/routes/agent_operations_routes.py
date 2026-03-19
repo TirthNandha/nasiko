@@ -2,12 +2,10 @@
 Agent Operations Routes - Agent build and deployment endpoints
 """
 
-from fastapi import APIRouter, Query, File, UploadFile, Path
+from fastapi import APIRouter, Query
 
 from ..handlers import HandlerFactory
 from ..types import (
-    AgentBuildRequest,
-    AgentDeployRequest,
     AgentBuildStatusUpdateRequest,
     AgentDeploymentStatusUpdateRequest,
     VersionMappingResponse,

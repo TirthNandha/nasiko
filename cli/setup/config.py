@@ -295,7 +295,7 @@ def get_terraform_dir(cli_override: Optional[str] = None) -> Path:
             return path
         else:
             console.print(f"[yellow]Warning: Terraform directory not found: {path}[/]")
-            console.print(f"[yellow]Falling back to default location[/]")
+            console.print("[yellow]Falling back to default location[/]")
 
     env_path = os.environ.get("NASIKO_TERRAFORM_DIR")
     if env_path:
@@ -580,15 +580,15 @@ def print_state_info(provider: str, cluster_name: str):
 
     if backend["type"] == "local":
         state_dir = get_state_dir(provider, cluster_name)
-        console.print(f"  Backend: [cyan]local[/]")
+        console.print("  Backend: [cyan]local[/]")
         console.print(f"  State Directory: [cyan]{state_dir}[/]")
         console.print(
-            f"  [dim]Tip: Back up this directory to preserve your infrastructure state[/]"
+            "  [dim]Tip: Back up this directory to preserve your infrastructure state[/]"
         )
 
     elif backend["type"] == "s3":
         key = f"{backend['key_prefix']}/{provider}/{cluster_name}/terraform.tfstate"
-        console.print(f"  Backend: [cyan]s3[/]")
+        console.print("  Backend: [cyan]s3[/]")
         console.print(f"  Bucket: [cyan]{backend['bucket']}[/]")
         console.print(f"  Key: [cyan]{key}[/]")
         console.print(f"  Region: [cyan]{backend['region']}[/]")
@@ -596,7 +596,7 @@ def print_state_info(provider: str, cluster_name: str):
             console.print(f"  Lock Table: [cyan]{backend['dynamodb_table']}[/]")
 
     elif backend["type"] == "gcs":
-        console.print(f"  Backend: [cyan]gcs[/]")
+        console.print("  Backend: [cyan]gcs[/]")
         console.print(f"  Bucket: [cyan]{backend['bucket']}[/]")
         console.print(
             f"  Prefix: [cyan]{backend['prefix']}/{provider}/{cluster_name}[/]"
@@ -604,7 +604,7 @@ def print_state_info(provider: str, cluster_name: str):
 
     elif backend["type"] == "remote":
         workspace = f"{backend['workspace_prefix']}{provider}-{cluster_name}"
-        console.print(f"  Backend: [cyan]Terraform Cloud[/]")
+        console.print("  Backend: [cyan]Terraform Cloud[/]")
         console.print(f"  Organization: [cyan]{backend['organization']}[/]")
         console.print(f"  Workspace: [cyan]{workspace}[/]")
 

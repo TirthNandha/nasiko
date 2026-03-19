@@ -5,7 +5,7 @@ Agent Update Service - Handles agent updates, versioning, and rollbacks
 import os
 import time
 import semver
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any
 from uuid import uuid4
 from datetime import datetime, timezone
 from fastapi import UploadFile
@@ -452,7 +452,7 @@ class AgentUpdateService:
             except:
                 # Ultimate fallback - use 1.0.1 instead of timestamp
                 self.logger.warning(
-                    f"AGENT_UPDATE: Ultimate fallback used - returning 1.0.1"
+                    "AGENT_UPDATE: Ultimate fallback used - returning 1.0.1"
                 )
                 return "1.0.1"
 

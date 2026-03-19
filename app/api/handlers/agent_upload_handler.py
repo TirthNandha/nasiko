@@ -249,10 +249,10 @@ class AgentUploadHandler(BaseHandler):
                         description = f"Agent is being set up from {upload_type}. Setup in progress..."
                     elif status_state == "Failed":
                         description = (
-                            f"Agent setup failed. Please check the upload details."
+                            "Agent setup failed. Please check the upload details."
                         )
                     else:
-                        description = f"Agent successfully deployed and ready to use."
+                        description = "Agent successfully deployed and ready to use."
 
                 # Create simplified response item
                 simple_agent = SimpleUserUploadAgentResponse(
@@ -307,7 +307,6 @@ class AgentUploadHandler(BaseHandler):
         If version is provided, serves from /app/agents/{agent_name}/v{version}
         Otherwise serves from /app/agents/{agent_name} (for backward compatibility)
         """
-        import os
         import tarfile
         import tempfile
         from pathlib import Path

@@ -422,13 +422,13 @@ def setup_do_registry(registry_name: str):
                     f"[yellow]ℹ️  Found different registry '{actual_name}', but you requested '{registry_name}'[/]"
                 )
                 console.print(
-                    f"[yellow]   DigitalOcean allows only ONE registry per account.[/]"
+                    "[yellow]   DigitalOcean allows only ONE registry per account.[/]"
                 )
                 console.print(
                     f"[yellow]   To use your existing registry, specify: --cloud-reg-name {actual_name}[/]"
                 )
                 console.print(
-                    f"[yellow]   Or delete the existing registry first: doctl registry delete --force[/]"
+                    "[yellow]   Or delete the existing registry first: doctl registry delete --force[/]"
                 )
                 sys.exit(1)
         except (json.JSONDecodeError, KeyError, IndexError) as e:
@@ -504,7 +504,7 @@ def setup_do_registry(registry_name: str):
                         f"[cyan]   You have an existing registry: '{actual_name}'.[/]"
                     )
                     console.print(
-                        f"[cyan]   If you just upgraded your plan, it might take a few minutes to sync.[/]"
+                        "[cyan]   If you just upgraded your plan, it might take a few minutes to sync.[/]"
                     )
                 sys.exit(1)
             else:
@@ -514,7 +514,7 @@ def setup_do_registry(registry_name: str):
                 )
                 console.print(f"[dim]{err_msg}[/]")
                 console.print(
-                    f"[yellow]   Hint: Registry names are global and must be unique across ALL DigitalOcean users.[/]"
+                    "[yellow]   Hint: Registry names are global and must be unique across ALL DigitalOcean users.[/]"
                 )
                 console.print(
                     f"[yellow]   Try a more unique name if '{registry_name}' is taken by another user.[/]"

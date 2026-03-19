@@ -119,7 +119,7 @@ def _docker_login_if_needed(username: str) -> None:
         except (json.JSONDecodeError, OSError):
             pass
 
-    console.print(f"[yellow]Not logged into Docker Hub. Running docker login...[/]")
+    console.print("[yellow]Not logged into Docker Hub. Running docker login...[/]")
     result = subprocess.run(
         ["docker", "login", "-u", username],
         check=False,
@@ -218,10 +218,10 @@ def _build_images(
             else:
                 # For multi-platform without push, build and keep in cache
                 console.print(
-                    f"[yellow]Note: Multi-platform build will be cached locally but not loaded to docker images[/]"
+                    "[yellow]Note: Multi-platform build will be cached locally but not loaded to docker images[/]"
                 )
                 console.print(
-                    f"[yellow]Use --push flag with build-push command to push to registry[/]"
+                    "[yellow]Use --push flag with build-push command to push to registry[/]"
                 )
         else:
             cmd = [
@@ -342,7 +342,7 @@ def build_cmd(
         raise typer.Exit(1)
 
     if not dry_run:
-        console.print(f"\n[green]All images built successfully.[/]")
+        console.print("\n[green]All images built successfully.[/]")
 
 
 @images_app.command(name="push")
@@ -382,7 +382,7 @@ def push_cmd(
         raise typer.Exit(1)
 
     if not dry_run:
-        console.print(f"\n[green]All images pushed successfully.[/]")
+        console.print("\n[green]All images pushed successfully.[/]")
 
 
 @images_app.command(name="build-push")
@@ -460,7 +460,7 @@ def build_push_cmd(
             raise typer.Exit(1)
 
     if not dry_run:
-        console.print(f"\n[green]All images built and pushed successfully.[/]")
+        console.print("\n[green]All images built and pushed successfully.[/]")
 
 
 @images_app.command(name="list")

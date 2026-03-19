@@ -3,7 +3,6 @@ Core agent logic for translation.
 """
 
 import logging
-from typing import List, Dict, Any, Optional
 
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder

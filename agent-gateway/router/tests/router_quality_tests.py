@@ -13,7 +13,6 @@ from langchain_community.vectorstores import FAISS
 
 
 from router.src.core.routing_engine import RoutingEngine
-from router.src.config import settings
 
 AGENT_CARDS_DIR = "router/data/agent_cards"
 QUERIES_RESPONSES_DIR = "router/data/query_response_pairs"

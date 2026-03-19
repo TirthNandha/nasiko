@@ -3,8 +3,8 @@ N8N Entity - Unified models for N8N integration and user credentials
 """
 
 from pydantic import BaseModel, Field
-from typing import Optional, Dict, Any, List
-from datetime import datetime, timezone
+from typing import Optional, List
+from datetime import datetime
 
 
 class UserN8NCredentialCreateRequest(BaseModel):

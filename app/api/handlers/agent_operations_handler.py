@@ -2,13 +2,10 @@
 Agent Operations Handler - Agent build and deployment operations
 """
 
-from fastapi import HTTPException, status, UploadFile
-from fastapi.responses import FileResponse
+from fastapi import HTTPException, status
 
 from .base_handler import BaseHandler
 from ..types import (
-    AgentBuildRequest,
-    AgentDeployRequest,
     AgentBuildStatusUpdateRequest,
     AgentDeploymentStatusUpdateRequest,
     VersionMappingResponse,
@@ -16,13 +13,9 @@ from ..types import (
 from ...entity.entity import (
     AgentBuildInDB,
     AgentDeploymentBase,
-    BuildStatus,
-    DeploymentStatus,
 )
 from ...service.agent_operations_service import AgentOperationsService
 from ...service.k8s_service import K8sService
-from bson import ObjectId
-from datetime import datetime, timezone
 
 
 class AgentOperationsHandler(BaseHandler):

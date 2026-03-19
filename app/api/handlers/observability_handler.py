@@ -1,4 +1,4 @@
-from typing import Any, Coroutine
+from typing import Any
 
 from .base_handler import BaseHandler
 from app.service.observability_service import ObservabilityService

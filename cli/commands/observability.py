@@ -10,10 +10,7 @@ from rich.table import Table
 from rich.panel import Panel
 from rich.json import JSON
 from rich.progress import Progress, SpinnerColumn, TextColumn
-from rich.columns import Columns
 from rich.box import ROUNDED
-from rich.align import Align
-from rich.text import Text
 from datetime import datetime, timedelta
 from core.settings import APIEndpoints
 from auth.auth_manager import AuthManager
@@ -185,7 +182,7 @@ def sessions_command(
         successful_agents = sessions_data.get("successful_agents", 0)
 
         # Display header with stats
-        header_text = f"[bold cyan]Observability Sessions[/bold cyan]"
+        header_text = "[bold cyan]Observability Sessions[/bold cyan]"
         if agent_id:
             header_text += f" for [bold yellow]{agent_id}[/bold yellow]"
 
@@ -722,7 +719,7 @@ def format_io_for_table(text: str, max_width: int) -> str:
 def display_trace_tree(trace: Dict[str, Any]):
     """Display trace with nested spans in a tree format"""
 
-    console.print(f"[bold cyan]Trace Tree[/bold cyan]\n")
+    console.print("[bold cyan]Trace Tree[/bold cyan]\n")
 
     # Trace overview
     trace_info = f"""[bold]Trace ID:[/bold] {trace.get('id', 'N/A')}
@@ -740,7 +737,7 @@ def display_trace_tree(trace: Dict[str, Any]):
     # Span tree
     spans = trace.get("spans", [])
     if spans:
-        console.print(f"\n[bold]Span Tree:[/bold]")
+        console.print("\n[bold]Span Tree:[/bold]")
         display_spans_recursive(spans, depth=0)
 
 
@@ -878,7 +875,7 @@ def display_span_details(span: Dict[str, Any]):
                 attributes_data = attributes
 
             if attributes_data:
-                console.print(f"\n[bold]Attributes:[/bold]")
+                console.print("\n[bold]Attributes:[/bold]")
                 console.print(JSON.from_data(attributes_data))
         except Exception:
             console.print(f"\n[bold]Attributes:[/bold] {attributes}")

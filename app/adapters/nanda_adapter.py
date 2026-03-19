@@ -3,8 +3,6 @@ NANDA API Adapter
 Implements the adapter pattern for interacting with NANDA registry API
 """
 
-from typing import Optional, Dict, Any
-import httpx
 from .base_adapter import BaseAdapter
 from app.api.types import (
     NANDAApiResponse,

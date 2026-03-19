@@ -4,7 +4,6 @@ Vector store service for agent selection and similarity search.
 
 import logging
 from typing import List, Dict, Tuple, Optional
-from functools import lru_cache
 
 from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings

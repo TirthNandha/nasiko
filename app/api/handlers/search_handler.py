@@ -2,7 +2,6 @@
 Search Handler - Handles search operations for users and agents
 """
 
-from fastapi import HTTPException, status
 from .base_handler import BaseHandler
 from ..types import (
     UserSearchResponse,
@@ -11,7 +10,6 @@ from ..types import (
     AgentSearchResult,
 )
 from app.service.redis_search_service import RedisSearchService
-from typing import Optional
 
 
 class SearchHandler(BaseHandler):

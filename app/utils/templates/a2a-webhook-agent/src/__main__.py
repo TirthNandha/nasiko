@@ -18,7 +18,6 @@ from webhook_agent_executor import (
     WebhookAgentExecutor,  # type: ignore[import-untyped]
 )
 from starlette.applications import Starlette
-from starlette.middleware.cors import CORSMiddleware
 
 load_dotenv()
 

@@ -36,7 +36,7 @@ def create_session(agent_name: Optional[str] = None):
         data = result.get("data", result)
 
         session_id = data.get("session_id")
-        console.print(f"[green]✅ Session created successfully[/green]")
+        console.print("[green]✅ Session created successfully[/green]")
         console.print(f"[cyan]Session ID: {session_id}[/cyan]")
         if data.get("created_at"):
             console.print(f"[cyan]Created: {data['created_at']}[/cyan]")

@@ -3,13 +3,8 @@ from app.entity.entity import RegistryBase, RegistryInDB
 from datetime import datetime, timezone
 from typing import List, Optional, Dict
 from app.service.k8s_service import K8sService
-import httpx
-from app.pkg.config.config import settings
-from app.api.types import GithubUser, Token, GithubLoginResponse
 from app.pkg.redisclient.redisclient import (
     get_github_access_token,
-    set_github_access_token,
-    clear_github_access_token,
 )
 
 
@@ -192,9 +187,7 @@ class Service:
                     self.logger.info("SERVICE: Successfully created new registry")
                     return RegistryInDB(**result)
 
-            self.logger.error(
-                f"SERVICE: Failed to upsert registry - no result returned"
-            )
+            self.logger.error("SERVICE: Failed to upsert registry - no result returned")
             return None
         except Exception as e:
             self.logger.error(

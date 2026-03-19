@@ -1,10 +1,7 @@
 import requests
 import asyncio
-import json
-import random
-import time
 from typing import Any
-from urllib.parse import urlparse, quote
+from urllib.parse import urlparse
 from pydantic import BaseModel
 from bs4 import BeautifulSoup
 from langdetect import detect, DetectorFactory

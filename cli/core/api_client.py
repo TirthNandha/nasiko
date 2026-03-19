@@ -4,7 +4,7 @@ Handles authenticated requests with automatic token renewal.
 """
 
 import json
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, Optional
 import requests
 import typer
 from requests.adapters import HTTPAdapter

@@ -3,8 +3,7 @@ Redis Search Service - Handles search indexing and querying for users and agents
 """
 
 import redis.asyncio as redis
-from typing import List, Dict, Any, Optional, Set
-import asyncio
+from typing import List, Dict, Any
 import logging
 import os
 import json

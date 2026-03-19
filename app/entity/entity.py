@@ -1,7 +1,6 @@
 from datetime import datetime, timezone
 from enum import Enum
 from typing import List, Optional, Any, Dict
-from uuid import UUID, uuid4
 
 from bson import ObjectId
 from pydantic import BaseModel, Field, GetCoreSchemaHandler

@@ -362,7 +362,7 @@ def _setup_harbor_credentials(registry_user: str, registry_password: str):
                 "--docker-server=harbor-registry.harbor.svc.cluster.local:5000",
                 f"--docker-username={registry_user}",
                 f"--docker-password={registry_password}",
-                f"-n",
+                "-n",
                 NAMESPACE,
                 "--dry-run=client",
                 "-o",
@@ -392,7 +392,7 @@ def _setup_harbor_credentials(registry_user: str, registry_password: str):
                 f"--docker-server=localhost:{HARBOR_NODEPORT}",
                 f"--docker-username={registry_user}",
                 f"--docker-password={registry_password}",
-                f"-n",
+                "-n",
                 NAMESPACE,
                 "--dry-run=client",
                 "-o",
@@ -449,7 +449,7 @@ def _setup_harbor_credentials(registry_user: str, registry_password: str):
                 "patch",
                 "serviceaccount",
                 "default",
-                f"-n",
+                "-n",
                 NAMESPACE,
                 "--patch",
                 patch_json,
@@ -513,7 +513,7 @@ def _setup_local_port_forwarding():
             f"    [yellow]⚠️  Timeout waiting for {GATEWAY_SERVICE} service[/]"
         )
         console.print(
-            f"    [yellow]   You can set up port forwarding manually later:[/]"
+            "    [yellow]   You can set up port forwarding manually later:[/]"
         )
         console.print(
             f"    [cyan]kubectl port-forward -n {NAMESPACE} svc/{GATEWAY_SERVICE} {LOCAL_PORT}:80[/]"
@@ -522,7 +522,7 @@ def _setup_local_port_forwarding():
 
     # Setup port forwarding in background with subprocess for persistence
     try:
-        console.print(f"    🚀 Starting persistent port forwarding...")
+        console.print("    🚀 Starting persistent port forwarding...")
 
         # Start port forwarding as a detached background process using Popen
         with open("/tmp/nasiko-port-forward.log", "w") as logfile:
@@ -571,7 +571,7 @@ def _setup_local_port_forwarding():
                         )
                     except Exception:
                         console.print(
-                            f"    ℹ️  Gateway may still be initializing, but port forwarding is active"
+                            "    ℹ️  Gateway may still be initializing, but port forwarding is active"
                         )
                     break
                 else:
@@ -598,12 +598,12 @@ def _setup_local_port_forwarding():
                         f"    [yellow]⚠️  Cannot verify port forwarding: {e}[/]"
                     )
                     console.print(
-                        f"    [yellow]   Port forwarding may still be starting in background[/]"
+                        "    [yellow]   Port forwarding may still be starting in background[/]"
                     )
 
     except Exception as e:
         console.print(f"    [yellow]⚠️  Could not start port forwarding: {e}[/]")
-        console.print(f"    [yellow]   You can start it manually:[/]")
+        console.print("    [yellow]   You can start it manually:[/]")
         console.print(
             f"    [cyan]kubectl port-forward -n {NAMESPACE} svc/{GATEWAY_SERVICE} {LOCAL_PORT}:80[/]"
         )
@@ -650,7 +650,7 @@ def cleanup(
     ):  # If group or other has any permissions
         try:
             os.chmod(kubeconfig_path, 0o600)  # Set to rw-------
-            console.print(f"[dim]Fixed kubeconfig permissions to 600[/]")
+            console.print("[dim]Fixed kubeconfig permissions to 600[/]")
         except Exception as e:
             console.print(f"[yellow]⚠️  Could not fix kubeconfig permissions: {e}[/]")
 
@@ -833,7 +833,7 @@ def init_superuser(
     import base64
     from kubernetes import config as k8s_config, client
 
-    console.print(f"[bold cyan]🔐 Initializing Super User[/]")
+    console.print("[bold cyan]🔐 Initializing Super User[/]")
 
     # Ensure kubectl is available
     ensure_kubectl()
@@ -872,14 +872,14 @@ def init_superuser(
         if current_perms & (stat.S_IRWXG | stat.S_IRWXO):
             try:
                 os.chmod(kubeconfig_path, 0o600)
-                console.print(f"[dim]Fixed kubeconfig permissions to 600[/]")
+                console.print("[dim]Fixed kubeconfig permissions to 600[/]")
             except Exception as e:
                 console.print(
                     f"[yellow]⚠️  Could not fix kubeconfig permissions: {e}[/]"
                 )
     except PermissionError:
         console.print(
-            f"[yellow]⚠️  Cannot check kubeconfig permissions. Please ensure it's readable.[/]"
+            "[yellow]⚠️  Cannot check kubeconfig permissions. Please ensure it's readable.[/]"
         )
         console.print(f"[yellow]   Try: chmod 600 {kubeconfig_path}[/]")
 
@@ -1089,7 +1089,7 @@ def init_superuser(
 
     except Exception as e:
         console.print(f"[red]❌ Failed to create superuser job: {e}[/]")
-        console.print(f"[yellow]   You may need to manually create the job[/]")
+        console.print("[yellow]   You may need to manually create the job[/]")
         raise typer.Exit(1)
 
     # Wait for super user initialization to complete
@@ -1148,7 +1148,7 @@ def init_superuser(
 
             # Display credentials prominently
             console.print(f"\n[bold green]{'='*60}[/]")
-            console.print(f"[bold green]  SUPER USER CREDENTIALS (SAVE THESE!)[/]")
+            console.print("[bold green]  SUPER USER CREDENTIALS (SAVE THESE!)[/]")
             console.print(f"[bold green]{'='*60}[/]")
             console.print(f"  [bold]Username:[/]      [cyan]{username}[/]")
             console.print(f"  [bold]Email:[/]         [cyan]{email}[/]")
@@ -1157,7 +1157,7 @@ def init_superuser(
             console.print(f"  [bold]Access Secret:[/] [yellow]{access_secret}[/]")
             console.print(f"[bold green]{'='*60}[/]")
             console.print(
-                f"\n[bold red]⚠️  Store the Access Secret securely - it won't be shown again![/]\n"
+                "\n[bold red]⚠️  Store the Access Secret securely - it won't be shown again![/]\n"
             )
 
             # Save to local file
@@ -1185,16 +1185,16 @@ def init_superuser(
             console.print(
                 f"[yellow]⚠️  Could not retrieve credentials from secret: {e}[/]"
             )
-            console.print(f"[yellow]   You can retrieve them later using:[/]")
+            console.print("[yellow]   You can retrieve them later using:[/]")
             console.print(
-                f"[cyan]   kubectl get secret superuser-credentials -n nasiko -o json | jq -r '.data | map_values(@base64d)'[/]\n"
+                "[cyan]   kubectl get secret superuser-credentials -n nasiko -o json | jq -r '.data | map_values(@base64d)'[/]\n"
             )
             raise typer.Exit(1)
 
     except Exception as e:
         console.print(f"[red]❌ Error during super user initialization: {e}[/]")
-        console.print(f"[yellow]   Check job logs with:[/]")
-        console.print(f"[cyan]   kubectl logs -n nasiko job/superuser-init[/]\n")
+        console.print("[yellow]   Check job logs with:[/]")
+        console.print("[cyan]   kubectl logs -n nasiko job/superuser-init[/]\n")
         raise typer.Exit(1)
 
     console.print("[bold green]✅ Super user initialization complete![/]")
@@ -1250,7 +1250,7 @@ def get_superuser(
     import base64
     from kubernetes import config as k8s_config, client
 
-    console.print(f"[bold cyan]🔍 Fetching Super User Credentials[/]")
+    console.print("[bold cyan]🔍 Fetching Super User Credentials[/]")
 
     # Ensure kubectl is available
     ensure_kubectl()
@@ -1289,14 +1289,14 @@ def get_superuser(
         if current_perms & (stat.S_IRWXG | stat.S_IRWXO):
             try:
                 os.chmod(kubeconfig_path, 0o600)
-                console.print(f"[dim]Fixed kubeconfig permissions to 600[/]")
+                console.print("[dim]Fixed kubeconfig permissions to 600[/]")
             except Exception as e:
                 console.print(
                     f"[yellow]⚠️  Could not fix kubeconfig permissions: {e}[/]"
                 )
     except PermissionError:
         console.print(
-            f"[yellow]⚠️  Cannot check kubeconfig permissions. Please ensure it's readable.[/]"
+            "[yellow]⚠️  Cannot check kubeconfig permissions. Please ensure it's readable.[/]"
         )
         console.print(f"[yellow]   Try: chmod 600 {kubeconfig_path}[/]")
 
@@ -1351,7 +1351,7 @@ def get_superuser(
 
         # Display credentials prominently
         console.print(f"\n[bold green]{'='*60}[/]")
-        console.print(f"[bold green]  SUPER USER CREDENTIALS[/]")
+        console.print("[bold green]  SUPER USER CREDENTIALS[/]")
         console.print(f"[bold green]{'='*60}[/]")
         console.print(f"  [bold]Username:[/]      [cyan]{username}[/]")
         console.print(f"  [bold]Email:[/]         [cyan]{email}[/]")
@@ -1359,7 +1359,7 @@ def get_superuser(
         console.print(f"  [bold]Access Key:[/]    [yellow]{access_key}[/]")
         console.print(f"  [bold]Access Secret:[/] [yellow]{access_secret}[/]")
         console.print(f"[bold green]{'='*60}[/]")
-        console.print(f"\n[bold red]⚠️  Keep the Access Secret secure![/]\n")
+        console.print("\n[bold red]⚠️  Keep the Access Secret secure![/]\n")
 
         # Save to local file if requested
         if save_to_file:
@@ -1384,26 +1384,26 @@ def get_superuser(
             console.print(f"[green]✅ Credentials saved to: {creds_file}[/]\n")
         else:
             console.print(
-                f"[dim]ℹ️  Credentials not saved to file (use --save to save)[/]\n"
+                "[dim]ℹ️  Credentials not saved to file (use --save to save)[/]\n"
             )
 
     except client.exceptions.ApiException as e:
         if e.status == 404:
             console.print(
-                f"[red]❌ Secret 'superuser-credentials' not found in 'nasiko' namespace[/]"
+                "[red]❌ Secret 'superuser-credentials' not found in 'nasiko' namespace[/]"
             )
             console.print(
-                f"[yellow]   The super user may not have been initialized yet.[/]"
+                "[yellow]   The super user may not have been initialized yet.[/]"
             )
-            console.print(f"[cyan]   Run: nasiko setup init-superuser[/]\n")
+            console.print("[cyan]   Run: nasiko setup init-superuser[/]\n")
         else:
             console.print(f"[red]❌ Error reading secret: {e}[/]")
         raise typer.Exit(1)
     except Exception as e:
         console.print(f"[red]❌ Error retrieving credentials: {e}[/]")
-        console.print(f"[yellow]   You can try manually:[/]")
+        console.print("[yellow]   You can try manually:[/]")
         console.print(
-            f"[cyan]   kubectl get secret superuser-credentials -n nasiko -o json | jq -r '.data | map_values(@base64d)'[/]\n"
+            "[cyan]   kubectl get secret superuser-credentials -n nasiko -o json | jq -r '.data | map_values(@base64d)'[/]\n"
         )
         raise typer.Exit(1)
 
@@ -1560,7 +1560,7 @@ def bootstrap(
                 f"[yellow]⚠️  Missing credentials for {provider_str}: {', '.join(missing_creds)}[/]"
             )
             console.print(
-                f"[yellow]   Set these in your .env file or export them as environment variables.[/]"
+                "[yellow]   Set these in your .env file or export them as environment variables.[/]"
             )
 
     # Ensure kubectl is available (will auto-download if not found)
@@ -1624,7 +1624,7 @@ def bootstrap(
             try:
                 os.chmod(kubeconfig_path, 0o600)  # Set to rw-------
                 console.print(
-                    f"[dim]  Fixed kubeconfig permissions to 600 (owner read/write only)[/]"
+                    "[dim]  Fixed kubeconfig permissions to 600 (owner read/write only)[/]"
                 )
             except Exception as e:
                 console.print(
@@ -1988,7 +1988,7 @@ def bootstrap(
 
             # Display credentials prominently
             console.print(f"\n[bold green]{'='*60}[/]")
-            console.print(f"[bold green]  SUPER USER CREDENTIALS (SAVE THESE!)[/]")
+            console.print("[bold green]  SUPER USER CREDENTIALS (SAVE THESE!)[/]")
             console.print(f"[bold green]{'='*60}[/]")
             console.print(f"  [bold]Username:[/]      [cyan]{username}[/]")
             console.print(f"  [bold]Email:[/]         [cyan]{email}[/]")
@@ -1997,7 +1997,7 @@ def bootstrap(
             console.print(f"  [bold]Access Secret:[/] [yellow]{access_secret}[/]")
             console.print(f"[bold green]{'='*60}[/]")
             console.print(
-                f"\n[bold red]⚠️  Store the Access Secret securely - it won't be shown again![/]\n"
+                "\n[bold red]⚠️  Store the Access Secret securely - it won't be shown again![/]\n"
             )
 
             # Save to local file as well
@@ -2027,17 +2027,17 @@ def bootstrap(
             console.print(
                 f"[yellow]⚠️  Could not retrieve credentials from secret: {e}[/]"
             )
-            console.print(f"[yellow]   You can retrieve them later using:[/]")
+            console.print("[yellow]   You can retrieve them later using:[/]")
             console.print(
-                f"[cyan]   kubectl get secret superuser-credentials -n nasiko -o json | jq -r '.data | map_values(@base64d)'[/]\n"
+                "[cyan]   kubectl get secret superuser-credentials -n nasiko -o json | jq -r '.data | map_values(@base64d)'[/]\n"
             )
 
     except Exception as e:
         console.print(f"[yellow]⚠️  Error during super user initialization: {e}[/]")
         console.print(
-            f"[yellow]   Super user may not have been created. Check job logs:[/]"
+            "[yellow]   Super user may not have been created. Check job logs:[/]"
         )
-        console.print(f"[cyan]   kubectl logs -n nasiko job/superuser-init[/]\n")
+        console.print("[cyan]   kubectl logs -n nasiko job/superuser-init[/]\n")
 
     # --- STEP 5.5: Deploy Kubernetes Dashboard ---
     console.rule("[bold magenta]STEP 5.5: Deploying Kubernetes Dashboard[/]")

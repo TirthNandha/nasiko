@@ -3,7 +3,7 @@ Agent client service for communicating with selected agents.
 """
 
 import logging
-from typing import Dict, List, Tuple, Any, Optional
+from typing import Dict, List, Tuple, Any
 
 import httpx
 from router.src.config import settings

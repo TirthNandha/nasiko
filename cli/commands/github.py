@@ -4,7 +4,7 @@ GitHub authentication and repository commands for Nasiko CLI.
 
 import time
 import webbrowser
-from typing import Optional, Any, Union
+from typing import Optional, Union
 
 import typer
 from rich.console import Console
@@ -29,7 +29,7 @@ def get_github_status():
                 f"[green]GitHub is connected (username: {result.get('username')})[/]"
             )
         else:
-            console.print(f"[red]GitHub is not connected[/]")
+            console.print("[red]GitHub is not connected[/]")
         return result
     except Exception as e:
         console.print(f"[red]Error: could not fetch token from the backend: {e}[/red]")

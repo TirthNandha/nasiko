@@ -2,8 +2,7 @@
 N8N Routes - All n8n related API endpoints including credentials and workflow registration
 """
 
-from fastapi import APIRouter, Path, Query, Depends
-from typing import Optional
+from fastapi import APIRouter, Query, Depends
 from app.api.types import SuccessResponse
 from app.api.auth import get_user_id_from_token
 from app.entity.n8n_entity import (
@@ -11,8 +10,6 @@ from app.entity.n8n_entity import (
     N8nRegisterResponse,
     UserN8NCredentialCreateRequest,
     UserN8NCredentialUpdateRequest,
-    UserN8NCredentialTestRequest,
-    UserN8NCredentialResponse,
     UserN8NCredentialSingleResponse,
     UserN8NConnectResponse,
     WorkflowListResponse,

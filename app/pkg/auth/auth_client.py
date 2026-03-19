@@ -4,8 +4,7 @@ Auth Client - Interface to communicate with the auth service
 
 import httpx
 import os
-from typing import List, Optional
-import asyncio
+from typing import List
 
 AUTH_SERVICE_URL = os.getenv("AUTH_SERVICE_URL", "http://localhost:8001")
 

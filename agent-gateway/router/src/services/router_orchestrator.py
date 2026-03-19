@@ -191,7 +191,7 @@ class RouterOrchestrator:
         try:
             logger.info(f"Sending request to agent: {agent_url}")
             yield self._router_response(
-                f"Sending user's query to agent...", "", False, agent_url
+                "Sending user's query to agent...", "", False, agent_url
             )
 
             # Send request to agent

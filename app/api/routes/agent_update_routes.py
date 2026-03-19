@@ -2,7 +2,7 @@
 Agent Update Routes - Agent update, rollback, and version management endpoints
 """
 
-from fastapi import APIRouter, File, Form, UploadFile, Path, Depends, HTTPException
+from fastapi import APIRouter, File, Form, UploadFile, Path, Depends
 from ..handlers import HandlerFactory
 from ..types import (
     AgentUpdateRequest,

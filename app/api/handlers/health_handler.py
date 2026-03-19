@@ -2,8 +2,6 @@
 Health Handler - Manages health check operations
 """
 
-from .base_handler import BaseHandler
-
 
 class HealthHandler:
     """Handler for health check operations"""

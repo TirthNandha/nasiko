@@ -173,7 +173,7 @@ class AgentOperationsService:
 
             return AgentDeploymentBase(**convert_objectid_to_str(deploy_record))
 
-        except ValueError as e:
+        except ValueError:
             # Re-raise ValueError (like "Build ID not found") without logging as error
             raise
         except Exception as e:

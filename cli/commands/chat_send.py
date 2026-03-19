@@ -6,7 +6,6 @@ import typer
 import requests
 import uuid
 import json
-from typing import Optional
 from rich.console import Console
 from rich.panel import Panel
 from rich.progress import Progress, SpinnerColumn, TextColumn

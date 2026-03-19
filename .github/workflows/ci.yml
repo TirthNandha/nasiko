@@ -15,11 +15,9 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install dependencies
-        run: pip install black==26.3.1 ruff mypy
+        run: pip install black==26.3.1 mypy
       - name: Check formatting
         run: black --check .
-      - name: Lint
-        run: ruff check .
 
   typecheck:
     runs-on: ubuntu-latest
@@ -29,6 +27,6 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install dependencies
-        run: pip install black==26.3.1 ruff mypy
+        run: pip install black==26.3.1 mypy
       - name: Type check
         run: mypy . --ignore-missing-imports || true

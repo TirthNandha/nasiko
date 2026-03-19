@@ -4,7 +4,6 @@ Webhook Agent - Handles all webhook communication logic
 
 import json
 import logging
-from typing import Dict, Any
 import httpx
 
 logger = logging.getLogger(__name__)

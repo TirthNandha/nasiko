@@ -3,11 +3,9 @@ User management commands for Nasiko CLI.
 """
 
 import typer
-from typing import Optional, List
 from rich.console import Console
 
 from core.api_client import get_api_client
-from core.settings import APIEndpoints
 
 console = Console()
 
@@ -39,7 +37,7 @@ def register_user_command(username: str, email: str, is_super_user: bool = False
         if result is None:
             raise typer.Exit(1)
 
-        console.print(f"[green]✅ User registered successfully![/green]")
+        console.print("[green]✅ User registered successfully![/green]")
         console.print(f"[green]User ID: {result.get('user_id')}[/green]")
         # console.print(f"[green]Username: {result.get('username')}[/green]")
         # console.print(f"[green]Email: {result.get('email')}[/green]")
@@ -117,7 +115,7 @@ def get_user_command(user_id: str):
     """
     Get detailed information about a specific user.
     """
-    console.print(f"[bold magenta]--- User Details ---[/bold magenta]")
+    console.print("[bold magenta]--- User Details ---[/bold magenta]")
     console.print(f"[cyan]User ID: {user_id}[/cyan]")
 
     try:
@@ -131,7 +129,7 @@ def get_user_command(user_id: str):
         if result is None:
             raise typer.Exit(1)
 
-        console.print(f"[green]✅ User found[/green]")
+        console.print("[green]✅ User found[/green]")
 
         username = result.get("username", "N/A")
         email = result.get("email", "N/A")
@@ -162,7 +160,7 @@ def regenerate_credentials_command(user_id: str):
     """
     Regenerate access credentials for a user.
     """
-    console.print(f"[bold magenta]--- Regenerate Credentials ---[/bold magenta]")
+    console.print("[bold magenta]--- Regenerate Credentials ---[/bold magenta]")
     console.print(f"[cyan]User ID: {user_id}[/cyan]")
 
     try:
@@ -203,7 +201,7 @@ def revoke_user_command(user_id: str):
     """
     Revoke all tokens for a specific user.
     """
-    console.print(f"[bold magenta]--- Revoke User Tokens ---[/bold magenta]")
+    console.print("[bold magenta]--- Revoke User Tokens ---[/bold magenta]")
     console.print(f"[cyan]User ID: {user_id}[/cyan]")
 
     try:
@@ -240,7 +238,7 @@ def reinstate_user_command(user_id: str):
     """
     Reinstate a user and regenerate credentials.
     """
-    console.print(f"[bold magenta]--- Reinstate User ---[/bold magenta]")
+    console.print("[bold magenta]--- Reinstate User ---[/bold magenta]")
     console.print(f"[cyan]User ID: {user_id}[/cyan]")
 
     try:
@@ -285,7 +283,7 @@ def delete_user_command(user_id: str, confirm: bool = False):
     """
     Delete a user permanently.
     """
-    console.print(f"[bold magenta]--- Delete User ---[/bold magenta]")
+    console.print("[bold magenta]--- Delete User ---[/bold magenta]")
     console.print(f"[cyan]User ID: {user_id}[/cyan]")
 
     # Confirmation check

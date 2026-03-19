@@ -2,7 +2,7 @@
 NANDA Routes - NANDA registry API endpoints
 """
 
-from fastapi import APIRouter, Path, Query, Depends
+from fastapi import APIRouter, Path, Query
 from typing import Optional
 
 from ..handlers import HandlerFactory

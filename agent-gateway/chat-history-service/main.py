@@ -3,10 +3,9 @@ Chat History Service
 Receives chat logs from Kong plugin and stores them in MongoDB
 """
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from typing import List, Dict, Any, Optional
-import json
+from typing import Dict, Any, Optional
 import logging
 from datetime import datetime, timezone
 from motor.motor_asyncio import AsyncIOMotorClient

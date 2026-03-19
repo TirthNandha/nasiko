@@ -15,7 +15,7 @@ from app.entity.n8n_entity import (
     UserN8NCredentialSingleResponse,
     WorkflowListResponse,
 )
-from typing import Optional, Dict, Any
+from typing import Dict, Any
 
 
 class N8nHandler(BaseHandler):

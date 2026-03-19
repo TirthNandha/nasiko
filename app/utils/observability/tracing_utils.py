@@ -193,7 +193,6 @@ def _patch_uvicorn(project_name):
         def patched_run(app, **kwargs):
             logger.info(f"Injecting Tracing Middleware into {type(app)}")
             if hasattr(app, "add_middleware"):
-                from starlette.middleware.base import BaseHTTPMiddleware
 
                 app.add_middleware(_JsonRpcSessionMiddleware)
 

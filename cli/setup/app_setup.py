@@ -1,14 +1,10 @@
 import sys
 import os
 import base64
-import secrets
-import urllib.parse
-import secrets
 import urllib.parse
 import json
 import typer
 import yaml
-import subprocess
 from pathlib import Path
 from kubernetes import client, config
 from rich.console import Console
@@ -370,7 +366,7 @@ class NasikoDeployer:
                 f"[yellow]⚠️  Timeout waiting for PVCs to bind: {[pvc[0] for pvc in pvcs_to_wait]}[/]"
             )
             console.print(
-                f"[yellow]   Proceeding anyway, but deployment may fail if storage isn't ready[/]"
+                "[yellow]   Proceeding anyway, but deployment may fail if storage isn't ready[/]"
             )
 
     def deploy_rbac(self):
@@ -927,7 +923,7 @@ class NasikoDeployer:
             f"[yellow]⚠️  Timeout waiting for Kong gateway LoadBalancer IP after {timeout}s[/]"
         )
         console.print(
-            f"[yellow]   You may need to manually set GATEWAY_URL environment variable[/]"
+            "[yellow]   You may need to manually set GATEWAY_URL environment variable[/]"
         )
         return None
 
@@ -991,11 +987,11 @@ class NasikoDeployer:
                     name = manifest.get("metadata", {}).get("name", "unknown")
                     apply_manifest(self.k8s_client, manifest, f"{kind}: {name}")
 
-            console.print(f"[green]✅ Super user initialization job created[/]")
+            console.print("[green]✅ Super user initialization job created[/]")
             console.print(f"[cyan]   Username: {username}[/]")
             console.print(f"[cyan]   Email: {email}[/]")
             console.print(
-                f"[dim]   Job will create user and store credentials in 'superuser-credentials' secret[/]"
+                "[dim]   Job will create user and store credentials in 'superuser-credentials' secret[/]"
             )
 
         except Exception as e:
@@ -1003,7 +999,7 @@ class NasikoDeployer:
                 f"[yellow]⚠️  Warning: Could not deploy superuser init job: {e}[/]"
             )
             console.print(
-                f"[yellow]   You can create the super user manually after deployment[/]"
+                "[yellow]   You can create the super user manually after deployment[/]"
             )
 
 

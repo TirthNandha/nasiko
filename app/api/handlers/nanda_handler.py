@@ -3,11 +3,11 @@ NANDA API Handler
 Handles HTTP requests and responses for NANDA API operations
 """
 
-from typing import Optional, Dict, Any
+from typing import Optional
 from fastapi import HTTPException, Query
 from .base_handler import BaseHandler
 from app.service.nanda_service import NANDAService
-from app.api.types import NANDAApiResponse, NANDAAgentsListRequest
+from app.api.types import NANDAApiResponse
 
 
 class NANDAHandler(BaseHandler):

@@ -9,7 +9,6 @@ import json
 import logging
 import asyncio
 import signal
-import sys
 import aiohttp
 import time
 import os
@@ -183,7 +182,7 @@ class K8sBuildWorker:
             target_version = fields.get("target_version")  # For rollbacks
 
             if not all([command, agent_name]):
-                self.logger.error(f"Invalid message format: missing required fields")
+                self.logger.error("Invalid message format: missing required fields")
                 await self.acknowledge_message(msg_id)
                 return
 
@@ -400,7 +399,7 @@ class K8sBuildWorker:
                 base_url,
                 "orchestration_processing",
                 97,
-                f"Build job submitted, waiting for completion",
+                "Build job submitted, waiting for completion",
             )
 
             # Step 2: Poll Job Status
@@ -674,7 +673,7 @@ class K8sBuildWorker:
                         return json.load(f)
                 else:
                     self.logger.warning(
-                        f"AgentCard.json not found in agent files, attempting to generate"
+                        "AgentCard.json not found in agent files, attempting to generate"
                     )
                     return await self.generate_agentcard(extract_dir, agent_name)
 
@@ -777,7 +776,7 @@ class K8sBuildWorker:
                     "id": agent_name,
                     "name": agent_name,
                     "url": service_url,
-                    "description": f"Agent deployed via K8s BuildKit",
+                    "description": "Agent deployed via K8s BuildKit",
                     "capabilities": {"tools": [], "prompts": []},
                     "version": "1.0.0",
                     "deployment_type": "kubernetes",
@@ -1210,7 +1209,7 @@ class K8sBuildWorker:
                 base_url,
                 "orchestration_processing",
                 97,
-                f"Build job submitted for update, waiting for completion",
+                "Build job submitted for update, waiting for completion",
             )
 
             # Wait for build completion
@@ -2000,10 +1999,10 @@ class K8sBuildWorker:
                 )
 
                 if dockerfile_exists_before and not dockerfile_exists_after:
-                    self.logger.error(f"🚨 Dockerfile was deleted during injection!")
+                    self.logger.error("🚨 Dockerfile was deleted during injection!")
                 elif dockerfile_exists_after and dockerfile_size == 0:
                     self.logger.error(
-                        f"🚨 Dockerfile was corrupted during injection (0 bytes)!"
+                        "🚨 Dockerfile was corrupted during injection (0 bytes)!"
                     )
 
                 if (

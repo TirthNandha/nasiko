@@ -18,7 +18,6 @@ from openai_agent_executor import (
     OpenAIAgentExecutor,  # type: ignore[import-untyped]
 )
 from starlette.applications import Starlette
-from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
 
 load_dotenv()
