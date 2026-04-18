@@ -36,7 +36,11 @@ RUN mkdir -p /app/app/utils && \
     touch /app/app/utils/__init__.py
 
 # Install Python dependencies including observability components
-RUN pip install --no-cache-dir -r /app/orchestrator/requirements.txt
+# Two-stage install: langtrace-python-sdk hard-pins boto3==1.38.0 which conflicts
+# with arize-phoenix → pydantic-ai-slim[bedrock] → boto3>=1.42.14.
+# Install main deps first (gets boto3>=1.42.14), then langtrace with --no-deps.
+RUN pip install --no-cache-dir -r /app/orchestrator/requirements.txt && \
+    pip install --no-cache-dir --no-deps langtrace-python-sdk>=3.8.21
 
 # Create non-root user for security (kept for potential future use)
 RUN useradd -m -u 1000 worker && chown -R worker:worker /app
