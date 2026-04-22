@@ -451,7 +451,8 @@ services:
       MINIMAX_API_KEY: ${MINIMAX_API_KEY:-}
       MINIMAX_BASE_URL: ${MINIMAX_BASE_URL:-https://api.minimax.io/v1}
       # OpenTelemetry — send traces to Phoenix
-      OTEL_EXPORTER_OTLP_ENDPOINT: http://phoenix-observability:4318
+      # Phoenix serves OTLP HTTP on port 6006 (same as UI), not 4318
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://phoenix-observability:6006
       OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
       OTEL_SERVICE_NAME: litellm-gateway
     volumes:

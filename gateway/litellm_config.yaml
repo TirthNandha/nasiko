@@ -12,7 +12,7 @@
 
 model_list:
   # -------------------------------------------------------------------------
-  # OpenRouter Models (Primary — free credits available)
+  # OpenRouter Models (Primary — used this coz it gives free credits)
   # -------------------------------------------------------------------------
   - model_name: "gpt-4o"
     litellm_params:
@@ -33,7 +33,7 @@ model_list:
       api_base: "https://openrouter.ai/api/v1"
 
   # -------------------------------------------------------------------------
-  # OpenAI Direct (Optional — uncomment if you have an OpenAI key)
+  # OpenAI Direct (uncomment if you have an OpenAI key)
   # -------------------------------------------------------------------------
   # - model_name: "openai/gpt-4o"
   #   litellm_params:
@@ -46,7 +46,7 @@ model_list:
   #     api_key: "os.environ/OPENAI_API_KEY"
 
   # -------------------------------------------------------------------------
-  # MiniMax (Optional — uncomment if you have a MiniMax key)
+  # MiniMax  (uncomment if you have a MiniMax key)
   # -------------------------------------------------------------------------
   # - model_name: "minimax/MiniMax-M2.7"
   #   litellm_params:
